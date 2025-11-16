@@ -21,4 +21,4 @@ Getting the website:
 
 # Demo & explanation
 
-  <a src="/splofi.mp4" frameborder="0" allowfullscreen="true"> 
+  ![https://youtu.be/O_mu2ucRvy0](https://youtu.be/O_mu2ucRvy0)
