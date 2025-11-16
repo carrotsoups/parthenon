@@ -13,7 +13,7 @@ os.makedirs(app.config['STATIC_TRACKS_PATH'], exist_ok=True)
 
 # Spotify credentials
 SPOTIFY_CLIENT_ID = "192fc22852a845cbb46f731d0acbd538"
-SPOTIFY_CLIENT_SECRET = "831ed3fc3d8b41bb88affa43525add5d"
+SPOTIFY_CLIENT_SECRET = os.getenv("SPOTIFY_CLIENT_SECRET")
 
 sp = spotipy.Spotify(auth_manager=SpotifyClientCredentials(
     client_id=SPOTIFY_CLIENT_ID,

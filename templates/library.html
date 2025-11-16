@@ -17,17 +17,24 @@
         <h2>{{ info.name }}</h2>
         <h3>{{ info.artist }}</h3>
 
+        <div class="audio-group">
+    <div>
         <p>Original:</p>
         <audio controls>
             <source src="{{ url_for('static', filename='tracks/' + info.original) }}" type="audio/wav">
         </audio>
-
-        {% if info.lofi %}
+    </div>
+    
+    {% if info.lofi %}
+    <div>
         <p>Lo-fi:</p>
         <audio controls>
             <source src="{{ url_for('static', filename='tracks/' + info.lofi) }}" type="audio/wav">
         </audio>
-        {% endif %}
+    </div>
+    {% endif %}
+</div>
+
 
         {% if info.stems %}
         <p class="toggle-btn" onclick="toggleStems('{{ track_id }}')">Show Stems ▼</p>
