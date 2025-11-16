@@ -20,5 +20,4 @@ Getting the website:
   7. Open the website! (http://127.0.0.1:5000/)
 
 # Demo & explanation
-
-  ![https://youtu.be/O_mu2ucRvy0](https://youtu.be/O_mu2ucRvy0)
+https://www.youtube.com/watch?v=O_mu2ucRvy0
