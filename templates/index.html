@@ -2,23 +2,24 @@
 <html>
 <head>
     <title>Spotify Playlist Processor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
 
 <h1>Spotify Playlist</h1>
 
-<button onclick="window.location.href='/library'">Go to Library</button>
+<button class="button" onclick="window.location.href='/library'">Go to Library</button>
 
 
-<input type="text" id="playlist_url" placeholder="Public Spotify Playlist URL" size="50">
-<button onclick="loadPlaylist()">Load Playlist</button>
+<input class="terminal-input" type="text" id="playlist_url" placeholder="Public Spotify Playlist URL" size="50">
+<button class="button" onclick="loadPlaylist()">Load Playlist</button>
 
 <h2>Songs:</h2>
 <form id="playlist_form">
     <div id="tracks"></div>
 </form>
 
-<button type="button" onclick="lofiSong()">Lofi Selected Song</button>
+<button class="button" type="button" onclick="lofiSong()">Lofi Selected Song</button>
 
 <h2>Processed Audio:</h2>
 <audio id="player" controls style="display:none;">
