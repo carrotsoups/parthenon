@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Track Library</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+</head>
+<body>
+<h1>Library of Tracks</h1>
+
+{% for track_id, info in tracks.items() %}
+<div class="track-card">
+    {% if info.album_img %}
+    <img class="album-art" src="{{ info.album_img }}" alt="Album Art">
+    {% endif %}
+    <div class="track-info">
+        <h2>{{ info.name }}</h2>
+        <h3>{{ info.artist }}</h3>
+
+        <p>Original:</p>
+        <audio controls>
+            <source src="{{ url_for('static', filename='tracks/' + info.original) }}" type="audio/wav">
+        </audio>
+
+        {% if info.lofi %}
+        <p>Lo-fi:</p>
+        <audio controls>
+            <source src="{{ url_for('static', filename='tracks/' + info.lofi) }}" type="audio/wav">
+        </audio>
+        {% endif %}
+
+        {% if info.stems %}
+        <p class="toggle-btn" onclick="toggleStems('{{ track_id }}')">Show Stems ▼</p>
+        <div class="stems" id="stems-{{ track_id }}">
+            {% for stem in info.stems %}
+            <p>{{ stem.replace('.wav','') }}:</p>
+            <audio controls>
+                <source src="{{ url_for('static', filename='tracks/' + track_id + '_stems/' + stem) }}" type="audio/wav">
+            </audio>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endfor %}
+
+<script>
+function toggleStems(track_id) {
+    const div = document.getElementById(`stems-${track_id}`);
+    if (div.style.display === "none" || div.style.display === "") {
+        div.style.display = "block";
+    } else {
+        div.style.display = "none";
+    }
+}
+</script>
+
+</body>
+</html>

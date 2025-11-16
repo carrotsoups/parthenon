@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Spotify Playlist Processor</title>
+</head>
+<body>
+<h1>Spotify Playlist</h1>
+<input type="text" id="playlist_url" placeholder="Public Spotify Playlist URL" size="50">
+<button onclick="loadPlaylist()">Load Playlist</button>
+
+<h2>Songs:</h2>
+<form id="playlist_form">
+    <div id="tracks"></div>
+</form>
+
+<button type="button" onclick="lofiSong()">Lofi Selected Song</button>
+
+<h2>Processed Audio:</h2>
+<audio id="player" controls style="display:none;">
+    <source id="audio_src" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+<h2>Processing Logs:</h2>
+<pre id="logs" style="background:#eee; padding:10px; height:200px; overflow:auto;"></pre>
+
+<script>
+async function loadPlaylist() {
+    const playlistUrl = document.getElementById('playlist_url').value;
+    const res = await fetch('/get_playlist', {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({playlistUrl})
+    });
+    const data = await res.json();
+    displayTracks(data.tracks);
+}
+
+function displayTracks(tracks) {
+    const container = document.getElementById('tracks');
+    container.innerHTML = '';
+    tracks.forEach((track, index) => {
+        const div = document.createElement('div');
+        div.innerHTML = `<input type="radio" name="selectedTrack" value="${track.track_id}" id="track${index}">
+                         <label for="track${index}">${track.name} - ${track.artist}</label>`;
+        container.appendChild(div);
+    });
+}
+
+function getSelectedTrackId() {
+    const form = document.getElementById('playlist_form');
+    const selected = form.querySelector('input[name="selectedTrack"]:checked');
+    if (!selected) {
+        alert("Please select a song first.");
+        return null;
+    }
+    return selected.value;
+}
+
+function playAudio(url) {
+    const audioPlayer = document.getElementById('player');
+    const audioSrc = document.getElementById('audio_src');
+    audioSrc.src = url;
+    audioPlayer.style.display = "block";
+    audioPlayer.load();
+    audioPlayer.play();
+}
+
+function lofiSong() {
+    const track_id = getSelectedTrackId();
+    if (!track_id) return;
+
+    const logsContainer = document.getElementById('logs');
+    logsContainer.textContent = '';
+
+    const evtSource = new EventSource(`/lofi_song_stream?track_id=${track_id}`);
+
+    evtSource.onmessage = function(event) {
+        if (event.data.startsWith("LOFI_DONE")) {
+            const lofi_filename = `${track_id}_lofi.wav`;
+            playAudio(`/static/tracks/${lofi_filename}`);
+            evtSource.close();
+        } else {
+            logsContainer.textContent += event.data + "\n";
+            logsContainer.scrollTop = logsContainer.scrollHeight;
+        }
+    };
+}
+</script>
+</body>
+</html>

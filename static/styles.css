@@ -1,0 +1,35 @@
+ .track-card {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+        }
+        .track-info {
+            flex: 1;
+        }
+        .track-info h2, .track-info h3 {
+            margin: 2px 0;
+        }
+        .stems {
+            margin-top: 10px;
+            display: none;
+            padding-left: 20px;
+        }
+        .stems audio {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .toggle-btn {
+            cursor: pointer;
+            color: blue;
+            text-decoration: underline;
+        }
+        img.album-art {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 5px;
+        }

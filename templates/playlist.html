@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Select a Song</title>
+</head>
+<body>
+    <h1>Select a song to process</h1>
+    <form method="post" action="{{ url_for('process') }}">
+        {% for song in songs %}
+            <input type="radio" name="song" value="{{ song }}" required> {{ song }}<br>
+        {% endfor %}
+        <button type="submit">Process Song</button>
+    </form>
+</body>
+</html>
