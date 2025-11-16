@@ -9,7 +9,7 @@ readme = "README.md"
 license = { text = "MIT" }
 
 # Specify Python version requirement
-requires-python = "==3.11*"
+requires-python = "==3.11.*"
 
 [tool.poetry.dependencies]
 python = "^3.11"
