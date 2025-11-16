@@ -90,7 +90,7 @@ audio::-webkit-media-controls-pause-button:hover {
 }
 
 audio::-webkit-media-controls-timeline {
-    background-color: #303030 !important;  /* Much more visible */
+    background-color: #8b8b8b !important;  /* Much more visible */
     border-radius: 10px;
     height: 6px;
     margin: 5px 10px;
