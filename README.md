@@ -21,6 +21,6 @@ Getting the website:
 
 # Demo
 <figure class="video_container">
-  <iframe src="/demo.mp4" frameborder="0" allowfullscreen="true"> 
+  <iframe src="/splofi.mp4" frameborder="0" allowfullscreen="true"> 
 </iframe>
 </figure>
