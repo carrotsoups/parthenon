@@ -183,8 +183,6 @@ audio::-webkit-media-controls-time-remaining-display {
     transform: scale(1.05);
 }
 
-
-/* Reusable button style */
 .button {
     background-color: #181818;    
     color: #1DB954;              
@@ -200,7 +198,6 @@ audio::-webkit-media-controls-time-remaining-display {
     text-decoration: none;
 }
 
-/* Hover effect */
 .button:hover {
     background-color: #1DB954; 
     color: #121212;         
@@ -216,7 +213,7 @@ audio::-webkit-media-controls-time-remaining-display {
 
 #logs {
     background-color: #000000;        
-    color: #00FF00;     
+    color: #0f310f;     
     font-family: 'Courier New', Courier, monospace;
     font-size: 0.95rem;
     padding: 15px;
@@ -226,7 +223,7 @@ audio::-webkit-media-controls-time-remaining-display {
     border: 1px solid #00FF00;     
     line-height: 1.4;
     white-space: pre-wrap;           
-}*/
+}
 
 #logs::-webkit-scrollbar {
     width: 8px;
@@ -245,7 +242,6 @@ audio::-webkit-media-controls-time-remaining-display {
     background-color: #00CC00; 
 }
 
-/* Optional flicker effect for more "terminal" realism */
 @keyframes flicker {
     0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
     20%, 22%, 24%, 55% { opacity: 0.7; }
@@ -253,10 +249,11 @@ audio::-webkit-media-controls-time-remaining-display {
 
 #logs {
     animation: flicker 1.5s infinite;
+    background-color: #000000;
 }
 
 .terminal-input {
-    background-color: #000;                  /* black background */
+    background-color: #000;                
     color: #00FF00;                   
     border: 2px solid #00FF00;           
     padding: 10px 15px;                  
@@ -268,16 +265,86 @@ audio::-webkit-media-controls-time-remaining-display {
     max-width: 600px;  
     display: block;
     margin: 0 auto 20px auto;
+    border-radius: 10px;
 }
 
-/* Placeholder styling */
 .terminal-input::placeholder {
     color: #00FF00AA;
 }
 
-/* Focus effect */
 .terminal-input:focus {
     background-color: #111;   
     box-shadow: 0 0 10px #00FF00;   
     border-color: #00FF00;
+}
+
+
+.input-group {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;  
+    margin-bottom: 20px;
+}
+
+
+.input-group .terminal-input {
+    flex: 1 1 300px;
+    max-width: 500px; 
+    margin: 0; 
+}
+
+.input-group .button {
+    align-self: center; 
+    flex: 0 0 auto; 
+}
+
+/* Container for the track list */
+#tracks {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+/* Each track row */
+#tracks div {
+    background-color: #181818;        /* dark card background */
+    border: 2px solid #1DB954;       /* neon green border */
+    border-radius: 12px;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+/* Hover effect */
+#tracks div:hover {
+    background-color: #1DB954;       /* green background on hover */
+    color: #121212;                  /* dark text on hover */
+    transform: scale(1.02);
+}
+
+/* Radio button */
+#tracks input[type="radio"] {
+    accent-color: #1DB954;           /* green selection */
+    width: 18px;
+    height: 18px;
+}
+
+/* Track label */
+#tracks label {
+    flex: 1;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1rem;
+    color: #00FF00;                  /* neon green text like terminal */
+    user-select: none;               /* prevent accidental text selection */
+}
+
+/* Selected track */
+#tracks input[type="radio"]:checked + label {
+    font-weight: bold;
+    color: #1DB954;                  /* highlight selected track */
 }
