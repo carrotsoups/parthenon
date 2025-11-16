@@ -19,8 +19,6 @@ Getting the website:
   6. Host the Flask app: `py -3.11 app.py`
   7. Open the website! (http://127.0.0.1:5000/)
 
-# Demo
-<figure class="video_container">
-  <iframe src="/splofi.mp4" frameborder="0" allowfullscreen="true"> 
-</iframe>
-</figure>
+# Demo & explanation
+
+  <a src="/splofi.mp4" frameborder="0" allowfullscreen="true"> 
