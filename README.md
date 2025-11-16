@@ -14,7 +14,13 @@ Getting the website:
   1. Clone the repo `git clone https://github.com/carrotsoups/parthenon.git`
   2. Enter directory: `cd parthenon`
   3. Create a virtual environment `py -3.11 -m venv venv`
-  4. Activate environment: `.\venv\Scripts\activate` (windows), source venv/bin/activate (linux & mac)
+  4. Activate environment: `.\venv\Scripts\activate` (windows), `source venv/bin/activate` (linux & mac)
   5. Install all dependencies: `py -3.11 -m pip install -r requirements.txt`
   6. Host the Flask app: `py -3.11 app.py`
   7. Open the website! (http://127.0.0.1:5000/)
+
+# Demo
+<figure class="video_container">
+  <iframe src="/demo.mp4" frameborder="0" allowfullscreen="true"> 
+</iframe>
+</figure>
