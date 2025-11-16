@@ -5,7 +5,10 @@ from spotipy.oauth2 import SpotifyClientCredentials
 import threading
 import queue
 from download_from_spotify import download_track
-from m import transform_to_lofi  # Your lofi function
+from m import transform_to_lofi
+from dotenv import load_dotenv
+
+load_dotenv() 
 
 app = Flask(__name__)
 app.config['STATIC_TRACKS_PATH'] = 'static/tracks'
